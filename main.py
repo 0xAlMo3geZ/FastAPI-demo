@@ -1,7 +1,7 @@
 from typing import Optional
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from fastapi.responses import RedirectResponse
+# from fastapi.responses import RedirectResponse
 
 app = FastAPI()
 
@@ -35,6 +35,10 @@ async def list_comments(skip: int = 0, limit: int = 10):
     return fake_comments_db[skip: skip + limit]
 
 
-@app.get("/{path:path}")
-async def redirect_to_root(path: str):
-    return RedirectResponse(url="/")
+# @app.get("/{path:path}")
+# async def redirect_to_root(path: str):
+#     return RedirectResponse(url="/")
+
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request, exc):
+    return {"detail": "Not Found"}
