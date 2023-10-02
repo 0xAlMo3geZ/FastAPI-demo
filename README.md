@@ -26,6 +26,11 @@ pip install -r requirements.txt
 ```bash
 # Start the FastAPI application
 uvicorn main:app --reload
+
+or
+
+# Start from module(blog)
+uvicorn blog.main:app --reload
 ```
 
 ## API Documentation
