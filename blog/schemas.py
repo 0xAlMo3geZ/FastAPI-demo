@@ -12,4 +12,11 @@ class ShowBlog(Blog):
     pass
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+
+
+class User(BaseModel):
+    name: str
+    email: str
+    password: str
+    is_active: Optional[bool]
