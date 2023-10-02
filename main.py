@@ -1,4 +1,6 @@
+from typing import Optional
 from fastapi import FastAPI
+from pydantic import BaseModel
 from fastapi.responses import RedirectResponse
 
 app = FastAPI()
@@ -10,6 +12,17 @@ fake_comments_db = [{'name': 'comment1'}, {
 @app.get("/")
 def index():
     return {'data': {'name': 'Blog Page'}}
+
+
+class Blog(BaseModel):
+    title: str
+    content: str
+    published: Optional[bool] = True
+
+
+@app.post('/blog')
+def create_blog(request: Blog):
+    return {'data': request}
 
 
 @app.get('/blog/{id}')
