@@ -16,8 +16,8 @@ def get_db():
         db.close()
 
 
-@app.post('/blog')
-def create_blog(request: schemas.Blog, db: Session = Depends(get_db), status_code=status.HTTP_201_CREATED):
+@app.post('/blog', status_code=status.HTTP_201_CREATED)
+def create_blog(request: schemas.Blog, db: Session = Depends(get_db)):
     new_blog = models.Blog(
         title=request.title, content=request.content, published=request.published)
     db.add(new_blog)
@@ -32,8 +32,8 @@ def get_all_blogs(db: Session = Depends(get_db)):
     return blogs
 
 
-@app.get('/blog/{id}')
-def get_blog(id: int, db: Session = Depends(get_db), status_code=status.HTTP_200_OK):
+@app.get('/blog/{id}', status_code=status.HTTP_200_OK)
+def get_blog(id: int, db: Session = Depends(get_db)):
     blog = db.query(models.Blog).filter(models.Blog.id == id)
     if not blog.first():
         raise HTTPException(
