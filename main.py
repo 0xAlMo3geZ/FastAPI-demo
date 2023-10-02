@@ -17,7 +17,7 @@ def index():
 class Blog(BaseModel):
     title: str
     content: str
-    published: Optional[bool] = True
+    published: Optional[bool]
 
 
 @app.post('/blog')
@@ -38,6 +38,7 @@ async def list_comments(skip: int = 0, limit: int = 10):
 # @app.get("/{path:path}")
 # async def redirect_to_root(path: str):
 #     return RedirectResponse(url="/")
+
 
 @app.exception_handler(HTTPException)
 async def http_exception_handler(request, exc):
