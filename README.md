@@ -12,7 +12,7 @@ git clone https://github.com/yourusername/yourproject.git
 cd yourproject
 
 # Create a virtual environment (optional but recommended)
-python -m venv venv
+python3 -m venv venv
 
 # Activate the virtual environment
 source venv/bin/activate  # On Windows: venv\Scripts\activate
