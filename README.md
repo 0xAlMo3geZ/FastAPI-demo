@@ -6,10 +6,10 @@ this a demo of me playing around and enjoying FastAPI.
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/yourproject.git
+git clone https://github.com/0xAlMo3geZ/FastAPI-demo.git
 
 # Change directory to the project folder
-cd yourproject
+cd FastAPI-demo
 
 # Create a virtual environment (optional but recommended)
 python3 -m venv venv
